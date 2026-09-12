@@ -1,0 +1,43 @@
+.optionContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.optionAutocomplete :global(.MuiOutlinedInput-root) {
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.optionAutocomplete :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.optionAutocomplete :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+  border-color: var(--primary-color);
+}
+
+.optionAutocomplete :global(.MuiInputLabel-root.Mui-focused) {
+  color: var(--primary-color);
+}
+
+
+.optionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-block: 4px;
+}
+
+.optionName {
+  color: var(--text-h);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.optionValue {
+  color: var(--text);
+  font-size: 12px;
+}
+
+.helperText {
+  margin-left: 0;
+  margin-right: 0;
+}

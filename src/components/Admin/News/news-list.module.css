@@ -1,0 +1,61 @@
+.listSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.listTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.listItem {
+    position: relative;
+    border-radius: 20px;
+    padding-top: 40px;
+}
+
+.statusText {
+    color: var(--text);
+}
+
+.paginationWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.paginationWrapper :global(.Mui-selected) {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+.deleteButton,
+.deleteDialogButton {
+    color: #1f2937 !important;
+    text-transform: none !important;
+}
+
+.deleteButton {
+    position: absolute !important;
+    top: 8px;
+    right: 8px;
+    min-width: 0 !important;
+    padding: 4px 8px !important;
+    border-radius: 999px !important;
+    background: transparent !important;
+}
+
+.deleteButton:hover,
+.deleteDialogButton:hover {
+    background: rgba(31, 41, 55, 0.08) !important;
+}
+
+.deleteDialogButton {
+    background: #1f2937 !important;
+    color: #fff !important;
+}
+
+.deleteDialogButton:hover {
+    background: #111827 !important;
+}

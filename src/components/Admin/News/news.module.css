@@ -1,0 +1,190 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 16px 32px;
+    background: #f8fafc;
+}
+
+.pageTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.pageSubtitle {
+    color: var(--text);
+}
+
+.formShell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.titleField,
+.imageField,
+.optionField,
+.fullWidthField {
+    width: 100%;
+}
+
+.titleField :global(.MuiOutlinedInput-root),
+.imageField :global(.MuiOutlinedInput-root),
+.optionField :global(.MuiOutlinedInput-root),
+.fullWidthField :global(.MuiOutlinedInput-root) {
+    border-radius: 12px;
+    background: #fff;
+}
+
+.titleField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.titleField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline),
+.imageField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.imageField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline),
+.optionField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.optionField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline),
+.fullWidthField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.fullWidthField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+    border-color: var(--primary-color);
+}
+
+.titleField :global(.MuiInputLabel-root.Mui-focused),
+.imageField :global(.MuiInputLabel-root.Mui-focused),
+.optionField :global(.MuiInputLabel-root.Mui-focused),
+.fullWidthField :global(.MuiInputLabel-root.Mui-focused) {
+    color: var(--primary-color);
+}
+
+.titleField {
+    grid-column: 1 / -1;
+}
+
+.imageField,
+.optionField {
+    min-width: 0;
+}
+
+.fullWidthField {
+    grid-column: 1 / -1;
+}
+
+.imageLinkLabel {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text);
+}
+
+.imageLinkBox {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+}
+
+.imageLinkText {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+    word-break: break-all;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.imageLinkPlaceholder {
+    color: var(--text);
+}
+
+.previewCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--social-bg);
+    border: 1px solid var(--border);
+}
+
+.previewTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.previewText,
+.previewMeta {
+    color: var(--text);
+}
+
+.previewJson {
+    margin: 0;
+    padding: 12px;
+    border-radius: 12px;
+    overflow: auto;
+    background: #111827;
+    color: #e5e7eb;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.submitButton {
+    align-self: flex-start;
+    border-radius: 999px !important;
+    padding-inline: 18px !important;
+    background: var(--primary-color) !important;
+    text-transform: none !important;
+}
+
+.submitButton:hover {
+    background: var(--primary-color) !important;
+    opacity: 0.92;
+}
+
+@media (min-width: 768px) {
+    .page {
+        padding: 28px 24px 40px;
+        gap: 20px;
+    }
+
+    .formShell {
+        padding: 24px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+    }
+
+    .imageField {
+        grid-column: span 1;
+    }
+
+    .optionField {
+        grid-column: span 1;
+    }
+
+    .titleField {
+        grid-column: 1 / -1;
+    }
+
+    .fullWidthField {
+        grid-column: 1 / -1;
+    }
+}
