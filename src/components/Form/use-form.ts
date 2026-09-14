@@ -13,7 +13,7 @@ function useForm<TValues extends FormikValues = FormikValues>(id: string) {
         throw new Error(`useForm(${id}) was called outside the matching form context.`);
     }
 
-    const matchedState = formState as FormState<TValues>;
+    const matchedState = formState as unknown as FormState<TValues>;
 
     return {
         id: matchedState.id,

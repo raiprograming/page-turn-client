@@ -325,9 +325,14 @@ function Home() {
             <p className={styles.cardTitle}>Less information overload.</p>
             <p className={styles.cardTitle}>More meaningful learning.</p>
 
-            <p className={styles.closingHeadline}>
-                One platform. <span className={styles.accentColor}>Infinite learning.</span>
-            </p>
+            <div>
+                <p className={styles.closingHeadline}>
+                    One platform.
+                </p>
+                <p className={styles.closingHeadline}>
+                    <span className={styles.accentColor}>Infinite learning.</span>
+                </p>
+            </div>
         </Box>
 
         <Box component="section" className={styles.section}>

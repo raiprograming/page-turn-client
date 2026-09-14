@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { AppBar, Avatar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material'
-import { AccountCircle, HomeOutlined, LibraryBooksOutlined, MenuBook, NewspaperOutlined, PersonOutlined } from '@mui/icons-material'
+import { AccountCircle, HomeOutlined, LibraryBooksOutlined, NewspaperOutlined, PersonOutlined } from '@mui/icons-material'
 import './App.css'
 import { Outlet, useNavigate } from 'react-router'
 import PageturnIcon from './assets/pageturn-text-icon.svg';
 import { useAppSelector } from './store/hooks'
+import { useLayout } from './use-layout'
 
 const navItems = [
   { label: 'Home', icon: <HomeOutlined /> },
@@ -18,6 +19,7 @@ const formatBottomLabel = (label: string) => label.charAt(0).toUpperCase() + lab
 function Layout() {
   const navigate = useNavigate()
   const userInfo = useAppSelector((state) => state.user.userInfo)
+  const { handleNavItemClick, isNavItemActive } = useLayout()
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window === 'undefined') {
       return false
@@ -74,7 +76,15 @@ function Layout() {
             <>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, ml: 3 }}>
                 {navItems.map((item) => (
-                  <Typography key={item.label} variant="body1">
+                  <Typography
+                    key={item.label}
+                    variant="body1"
+                    onClick={() => handleNavItemClick(item.label)}
+                    sx={{
+                      cursor: 'pointer',
+                      color: isNavItemActive(item.label) ? 'var(--primary-color)' : 'inherit',
+                    }}
+                  >
                     {item.label}
                   </Typography>
                 ))}
@@ -117,13 +127,14 @@ function Layout() {
               <Button
                 key={item.label}
                 color="inherit"
+                onClick={() => handleNavItemClick(item.label)}
                 sx={{
                   minWidth: 'auto',
                   px: 1,
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 0.25,
-                  color: item.label === 'Home' ? '#e65100' : '#9e9e9e',
+                  color: isNavItemActive(item.label) ? 'var(--primary-color)' : '#9e9e9e',
                 }}
               >
                 {item.icon}
