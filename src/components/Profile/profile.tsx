@@ -28,7 +28,7 @@ function Profile() {
 
     const handleGoogleLogin = async () => {
         try {
-            const result = await authService.getGoogleRedirectUrl("http://localhost:5173/profile");
+            const result = await authService.getGoogleRedirectUrl(import.meta.env.VITE_GOOGLE_REDIRECT_URL);
 
             if (result.error) {
                 console.error('Failed to fetch Google redirect URL', result.error);

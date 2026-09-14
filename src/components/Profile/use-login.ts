@@ -7,7 +7,7 @@ function useLogin(code: string) {
 
     const handleLogin = async () => {
         try {
-            const response = await authService.getUserInfoFromCode(code, "http://localhost:5173/profile");
+            const response = await authService.getUserInfoFromCode(code, import.meta.env.VITE_GOOGLE_REDIRECT_URL);
             if (response.error) {
                 console.error('Failed to fetch user info', response.error);
                 return;
