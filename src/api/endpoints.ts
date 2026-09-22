@@ -20,5 +20,6 @@ export const ASSET_ENDPOINTS = {
 export const NEWS_ENDPOINTS = {
   add: '/news',
   list: '/news/list',
+  detail: '/news',
   remove: '/news',
 } as const;

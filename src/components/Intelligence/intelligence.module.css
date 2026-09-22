@@ -1,0 +1,217 @@
+.page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    overflow: hidden;
+}
+
+.statusText {
+    color: var(--text);
+    text-align: center;
+    padding: 40px 16px;
+}
+
+.tinderCard {
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    /* border-radius: 20px; */
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    cursor: grab;
+    overflow: hidden;
+}
+
+.categoryRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.category {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 13px !important;
+}
+
+.liveDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ef4444;
+    flex-shrink: 0;
+}
+
+.title {
+    color: var(--text-h);
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+    flex-shrink: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.meta {
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    flex-shrink: 0;
+}
+
+.coverImageWrapper {
+    width: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.coverImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.content {
+    color: var(--text);
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    flex-shrink: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.link {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.tipBox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(230, 81, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.tipIcon {
+    color: var(--primary-color) !important;
+    flex-shrink: 0;
+}
+
+.tipText {
+    color: var(--text-h);
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.audienceLabel {
+    color: var(--primary-color) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 12px !important;
+    flex-shrink: 0;
+}
+
+.audienceDescription {
+    color: var(--text);
+    font-style: italic;
+    font-size: 13px !important;
+    flex-shrink: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.footerAction {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.swipeNextAction {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: auto;
+    color: var(--text-h);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .page {
+        padding: 16px 24px;
+    }
+
+    .card {
+        padding: 24px;
+        gap: 12px;
+    }
+
+    .title {
+        font-size: 22px !important;
+    }
+
+    .content {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+    }
+}

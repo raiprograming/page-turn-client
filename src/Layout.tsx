@@ -43,10 +43,14 @@ function Layout() {
     <Box
       sx={{
         flexGrow: 1,
-        minHeight: '100vh',
+        minHeight: '100dvh',
         bgcolor: '#f3f4f6',
         color: 'text.primary',
         position: 'relative',
+        // Relative, clamped navbar/bottom-nav heights so they scale with device height
+        // without ever looking oversized or cramped.
+        '--navbar-height': 'clamp(52px, 8dvh, 68px)',
+        '--bottomnav-height': 'clamp(52px, 9dvh, 72px)',
       }}
     >
       <AppBar
@@ -61,9 +65,16 @@ function Layout() {
           left: 0,
           right: 0,
           zIndex: 1200,
+          height: 'var(--navbar-height)',
         }}
       >
-        <Toolbar sx={isMobile ? { justifyContent: 'space-between', px: 1 } : { justifyContent: 'flex-start', px: 2, gap: 2 }}>
+        <Toolbar
+          sx={{
+            minHeight: 'var(--navbar-height) !important',
+            height: 'var(--navbar-height)',
+            ...(isMobile ? { justifyContent: 'space-between', px: 1 } : { justifyContent: 'flex-start', px: 2, gap: 2 }),
+          }}
+        >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <img src={PageturnIcon} alt="Page Turn Icon" style={{ width: '170px', height: '50px' }} />
           </Box>
@@ -102,27 +113,41 @@ function Layout() {
       <Box
         component="main"
         sx={{
-          pt: { xs: 10, md: 12 },
-          pb: { xs: isMobile ? 12 : 4, md: 4 },
-          px: { xs: 2, md: 3 },
-          minHeight: '100vh',
+          position: 'fixed',
+          top: 'var(--navbar-height)',
+          bottom: isMobile ? 'var(--bottomnav-height)' : 0,
+          left: 0,
+          right: 0,
           boxSizing: 'border-box',
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          position: 'relative',
           zIndex: 1,
           bgcolor: '#f3f4f6',
           color: 'text.primary',
           textAlign: 'left',
+          overflow: 'hidden',
+          p: 0,
         }}
       >
         <Outlet />
       </Box>
 
       {isMobile ? (
-        <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, bgcolor: 'white', color: 'text.primary', zIndex: 1100, borderTop: '1px solid #e5e7eb' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-around', py: 1 }}>
+        <Box
+          sx={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 'var(--bottomnav-height)',
+            bgcolor: 'white',
+            color: 'text.primary',
+            zIndex: 1100,
+            borderTop: '1px solid #e5e7eb',
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100%' }}>
             {navItems.map((item) => (
               <Button
                 key={item.label}

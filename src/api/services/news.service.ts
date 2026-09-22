@@ -42,6 +42,8 @@ export interface NewsListItem {
   createdAt: number;
 }
 
+export interface NewsFeedItem extends Omit<NewsListItem, 'summary'> {}
+
 export interface NewsAddResponse extends NewsListItem {}
 
 export interface NewsDeleteResponse extends NewsListItem {}
@@ -63,6 +65,31 @@ export const listNews = async (body: NewsListRequestBody): Promise<NewsListItem[
   const { data } = await apiClient.post<NewsListItem[] | NewsErrorResponse>(
     NEWS_ENDPOINTS.list,
     body,
+  );
+
+  return data;
+};
+
+/**
+ * Fetches a paginated feed of news, 20 items per page, sorted by most recent first.
+ * Each item excludes the `summary` field (use `getNewsDetail` for the full item).
+ * Optionally filter by `category`.
+ */
+export const getNewsList = async (
+  page = 1,
+  category?: string,
+): Promise<NewsFeedItem[] | NewsErrorResponse> => {
+  const { data } = await apiClient.get<NewsFeedItem[] | NewsErrorResponse>(
+    NEWS_ENDPOINTS.list,
+    { params: { page, category } },
+  );
+
+  return data;
+};
+
+export const getNewsDetail = async (newsId: string): Promise<NewsListItem | NewsErrorResponse> => {
+  const { data } = await apiClient.get<NewsListItem | NewsErrorResponse>(
+    `${NEWS_ENDPOINTS.detail}/${newsId}`,
   );
 
   return data;
