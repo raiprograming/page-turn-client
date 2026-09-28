@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     overflow: hidden;
 }
 
@@ -42,6 +42,7 @@
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
+    height: 2%;
 }
 
 .category {
@@ -58,6 +59,10 @@
     border-radius: 50%;
     background: #ef4444;
     flex-shrink: 0;
+}
+
+.titleRow {
+    max-height: 15%;
 }
 
 .title {
@@ -82,7 +87,7 @@
 
 .coverImageWrapper {
     width: 100%;
-    min-height: 0;
+    height: 20%;
     flex: 1 1 auto;
     border-radius: 14px;
     overflow: hidden;
@@ -91,37 +96,60 @@
 .coverImage {
     display: block;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: cover;
+    object-position: center;
     pointer-events: none;
+}
+
+.contentWrapper {
+    /* flex: 1 1 auto; */
+    max-height: 30%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* gap: 4px; */
+    overflow: hidden;
 }
 
 .content {
     color: var(--text);
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    flex-shrink: 0;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    max-height: 80%;
     overflow: hidden;
+}
+
+.readMoreLink {
+    align-self: flex-start;
+    flex-shrink: 0;
 }
 
 .link {
     color: var(--primary-color);
     font-weight: 700;
+    font-size: 12px;
     text-decoration: underline;
+}
+
+.startFreshAction {
+    composes: link;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .tipBox {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    padding: 10px 12px;
+    padding: 10px 1px;
     border-radius: 14px;
     background: rgba(230, 81, 0, 0.08);
     flex-shrink: 0;
+    /* height: 10%; */
 }
 
 .tipIcon {
@@ -159,6 +187,7 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
+    height: 20%;
 }
 
 .footer {
@@ -169,7 +198,7 @@
     padding-top: 10px;
     border-top: 1px solid var(--border);
     flex-shrink: 0;
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 .footerAction {
@@ -213,5 +242,15 @@
     .content {
         font-size: 15px !important;
         line-height: 1.6 !important;
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+    }
+
+    .coverImageWrapper {
+        flex: 0 1 auto;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        max-height: 320px;
+        border-radius: 18px;
     }
 }

@@ -126,7 +126,8 @@ function Layout() {
           bgcolor: '#f3f4f6',
           color: 'text.primary',
           textAlign: 'left',
-          overflow: 'hidden',
+          overflowY: 'auto',
+          overflowX: 'hidden',
           p: 0,
         }}
       >

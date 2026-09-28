@@ -1,5 +1,6 @@
 .section {
     text-align: center;
+    padding: 20px 16px;
 }
 
 @media (min-width: 900px) {
@@ -24,8 +25,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
-    /* align-items: center; */
-    /* padding: 24px 20px 48px; */
+    padding: 20px 16px 40px;
 }
 .hero1 {
     display: grid;
