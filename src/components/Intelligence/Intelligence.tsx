@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import { Box, Typography } from '@mui/material';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import useIntelligence from './use-intelligence';
 import styles from './intelligence.module.css';
 
@@ -96,7 +98,10 @@ function Intelligence() {
                     </Box>
 
                     <Box className={styles.contentWrapper}>
-                        <div className={styles.content}>{currentNews.summary}</div>
+                        <p className={styles.content}>{currentNews.summary}</p>
+                    </Box>
+
+                    <Box className={styles.readMore}>
                         <Link to={`/read?newsId=${currentNews._id}`} className={`${styles.link} ${styles.readMoreLink}`}>
                             Click here
                         </Link>
@@ -104,22 +109,15 @@ function Intelligence() {
 
                     <Box className={styles.tipBox}>
                         <LightbulbOutlinedIcon className={styles.tipIcon} />
-                        <Typography className={styles.tipText}>{TIP_CONTENT}</Typography>
+                        <Typography className={styles.tipText}>{currentNews.whyItMatters}</Typography>
                     </Box>
 
-                    {/* <Box className={styles.audienceRow}>
-                        <Typography className={styles.audienceLabel}>For {currentNews.audience}</Typography>
-                        {currentNews.audienceDescription && (
-                            <Typography className={styles.audienceDescription}>{currentNews.audienceDescription}</Typography>
-                        )}
-                    </Box> */}
-
                     <Box className={styles.footer}>
-                        <button type="button" className={`${styles.footerAction} pressable`} onClick={handleSave}>
-                            Save
+                        <button type="button" aria-label="Save" className={`${styles.footerAction} pressable`} onClick={handleSave}>
+                            <BookmarkBorderIcon fontSize="small" />
                         </button>
-                        <button type="button" className={`${styles.footerAction} pressable`} onClick={handleShare}>
-                            Share
+                        <button type="button" aria-label="Share" className={`${styles.footerAction} pressable`} onClick={handleShare}>
+                            <ShareOutlinedIcon fontSize="small" />
                         </button>
                         <button type="button" className={`${styles.swipeNextAction} pressable`} onClick={handleSwipeNext}>
                             Swipe for next news
