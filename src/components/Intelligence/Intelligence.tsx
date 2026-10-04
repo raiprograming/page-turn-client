@@ -14,9 +14,6 @@ interface TinderCardApi {
     restoreCard: () => Promise<void>;
 }
 
-// Hardcoded insight shown in the bulb tip box for every news item.
-const TIP_CONTENT = 'Every headline here can move markets, jobs, or your own money — we break down why it matters.';
-
 function Intelligence() {
     const {
         currentNews,
