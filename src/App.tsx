@@ -4,6 +4,7 @@ import Home from './components/Home/home';
 import Profile from './components/Profile/profile';
 import "./App.css";
 import Intelligence from './components/Intelligence/Intelligence';
+import IntelligenceDetail from './components/IntelligenceDetail/IntelligenceDetail';
 import Books from './components/Admin/Books/Books';
 import Reader from './components/Admin/Reader/Reader';
 import ProtectedAdminRoute from './hooks/ProtectedAdminRoute';
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/read" element={<Read />} />
           <Route path="/intelligence" element={<Intelligence />} />
+          <Route path="/intelligence/:meta" element={<IntelligenceDetail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element= {<ProtectedAdminRoute />}>
             <Route path="books" element={<Books />} />

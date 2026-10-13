@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import { Link } from 'react-router';
-import { Box, Typography } from '@mui/material';
+import { Alert, Box, Snackbar, Typography } from '@mui/material';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -19,6 +19,7 @@ function Intelligence() {
         currentNews,
         hasMoreNews,
         isAtFirstItem,
+        isSpecificView,
         loading,
         errorMessage,
         handleCardLeftScreen,
@@ -27,6 +28,10 @@ function Intelligence() {
         handleShare,
         getCoverImageUrl,
         reloadFromStart,
+        exitSpecificView,
+        isToastOpen,
+        toastMessage,
+        closeToast,
     } = useIntelligence();
     const cardRef = useRef<TinderCardApi | null>(null);
 
@@ -34,9 +39,31 @@ function Intelligence() {
         void cardRef.current?.swipe('left');
     };
 
+    const handleFooterAction = () => {
+        if (isSpecificView) {
+            exitSpecificView();
+            return;
+        }
+
+        handleSwipeNext();
+    };
+
     const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
         handleScroll(event.deltaX);
     };
+
+    const renderToast = () => (
+        <Snackbar
+            open={isToastOpen}
+            autoHideDuration={4000}
+            onClose={closeToast}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+            <Alert onClose={closeToast} severity="success" variant="filled" sx={{ width: '100%' }}>
+                {toastMessage}
+            </Alert>
+        </Snackbar>
+    );
 
     if (loading) {
         return (
@@ -99,7 +126,7 @@ function Intelligence() {
                     </Box>
 
                     <Box className={styles.readMore}>
-                        <Link to={`/read?newsId=${currentNews._id}`} className={`${styles.link} ${styles.readMoreLink}`}>
+                        <Link to={`/intelligence/${currentNews._id}`} className={`${styles.link} ${styles.readMoreLink}`}>
                             Click here
                         </Link>
                     </Box>
@@ -116,13 +143,14 @@ function Intelligence() {
                         <button type="button" aria-label="Share" className={`${styles.footerAction} pressable`} onClick={handleShare}>
                             <ShareOutlinedIcon fontSize="small" />
                         </button>
-                        <button type="button" className={`${styles.swipeNextAction} pressable`} onClick={handleSwipeNext}>
-                            Swipe for next news
+                        <button type="button" className={`${styles.swipeNextAction} pressable`} onClick={handleFooterAction}>
+                            {isSpecificView ? 'Read more' : 'Swipe for next news'}
                             <ArrowForwardIcon fontSize="small" />
                         </button>
                     </Box>
                 </Box>
             </TinderCard>
+            {renderToast()}
         </Box>
     );
 }
