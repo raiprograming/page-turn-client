@@ -8,6 +8,19 @@ export * as authService from './services/auth.service';
 export * as hyperParameterService from './services/hyper-parameters.service';
 export * as assetService from './services/asset.service';
 export * as newsService from './services/news.service';
+export * as bookService from './services/book.service';
+export type {
+  AddBookRequestBody,
+  AddOrUpdateBookPageRequestBody,
+  Book,
+  BookCategoryRating,
+  BookDetails,
+  BookErrorResponse,
+  BookImage,
+  BookPage,
+  DeleteBookPageRequestBody,
+  ListBooksRequestBody,
+} from './services/book.service';
 export type { HyperParameterOption } from './services/hyper-parameters.service';
 export type {
   NewsAddResponse,

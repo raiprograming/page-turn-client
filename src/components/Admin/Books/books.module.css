@@ -1,0 +1,267 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 16px 32px;
+    background: #f8fafc;
+}
+
+.pageTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.pageSubtitle {
+    color: var(--text);
+}
+
+.formShell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.fieldHalf,
+.fullWidthField {
+    width: 100%;
+}
+
+.fieldHalf :global(.MuiOutlinedInput-root),
+.fullWidthField :global(.MuiOutlinedInput-root) {
+    border-radius: 12px;
+    background: #fff;
+}
+
+.fieldHalf :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.fieldHalf :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline),
+.fullWidthField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.fullWidthField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+    border-color: var(--primary-color);
+}
+
+.fieldHalf :global(.MuiInputLabel-root.Mui-focused),
+.fullWidthField :global(.MuiInputLabel-root.Mui-focused) {
+    color: var(--primary-color);
+}
+
+.categoryRatingsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.categoryRatingsLabel {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.categoryRatingRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.categoryRatingField {
+    flex: 1 1 160px;
+}
+
+.categoryRatingField :global(.MuiOutlinedInput-root) {
+    border-radius: 12px;
+    background: #fff;
+}
+
+.addCategoryRatingButton {
+    align-self: flex-start;
+    color: var(--primary-color) !important;
+    text-transform: none !important;
+}
+
+.submitButton {
+    align-self: flex-start;
+    border-radius: 999px !important;
+    padding-inline: 18px !important;
+    background: var(--primary-color) !important;
+    text-transform: none !important;
+}
+
+.submitButton:hover {
+    background: var(--primary-color) !important;
+    opacity: 0.92;
+}
+
+.listSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.listTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.statusText {
+    color: var(--text);
+}
+
+.cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.bookCard {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-radius: 20px !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow) !important;
+    overflow: hidden;
+}
+
+.coverWrapper {
+    width: 100%;
+    height: 180px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--social-bg);
+}
+
+.bookTitleLink {
+    text-decoration: none;
+}
+
+.coverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.coverPlaceholderIcon {
+    font-size: 48px !important;
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bookTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+
+.bookAuthor {
+    color: var(--primary-color);
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+.bookAbout {
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+}
+
+.ratingsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ratingItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.categoryChip {
+    background: rgba(230, 81, 0, 0.1) !important;
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+}
+
+.readDurationRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+}
+
+.readDurationIcon {
+    color: var(--primary-color) !important;
+}
+
+.readDurationText {
+    color: var(--text);
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+.paginationWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.paginationWrapper :global(.Mui-selected) {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+@media (min-width: 768px) {
+    .page {
+        padding: 28px 24px 40px;
+        gap: 20px;
+    }
+
+    .formShell {
+        padding: 24px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+}
+
+@media (min-width: 900px) {
+    .bookCard {
+        flex: 0 1 calc(33.333% - 16px);
+        max-width: calc(33.333% - 16px);
+    }
+}

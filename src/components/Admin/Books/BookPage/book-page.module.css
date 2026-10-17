@@ -1,0 +1,150 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 16px 32px;
+    background: #f8fafc;
+}
+
+.statusText {
+    color: var(--text);
+}
+
+.metaShell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.pageTitle {
+    color: var(--text-h);
+    font-weight: 700 !important;
+}
+
+.metaAuthor {
+    color: var(--primary-color);
+    font-weight: 600 !important;
+}
+
+.pageFormShell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 16px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    box-sizing: border-box;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.fieldHalf,
+.fullWidthField {
+    width: 100%;
+}
+
+.fieldHalf :global(.MuiOutlinedInput-root),
+.fullWidthField :global(.MuiOutlinedInput-root) {
+    border-radius: 12px;
+    background: #fff;
+}
+
+.fieldHalf :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.fieldHalf :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline),
+.fullWidthField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline),
+.fullWidthField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+    border-color: var(--primary-color);
+}
+
+.fieldHalf :global(.MuiInputLabel-root.Mui-focused),
+.fullWidthField :global(.MuiInputLabel-root.Mui-focused) {
+    color: var(--primary-color);
+}
+
+.imageFieldRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.imageOpenLink {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    color: var(--primary-color) !important;
+}
+
+.imageActionButton {
+    margin-top: 10px;
+    color: var(--text) !important;
+}
+
+.submitButton {
+    align-self: flex-start;
+    border-radius: 999px !important;
+    padding-inline: 18px !important;
+    background: var(--primary-color) !important;
+    text-transform: none !important;
+}
+
+.submitButton:hover {
+    background: var(--primary-color) !important;
+    opacity: 0.92;
+}
+
+.buttonRow {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.removeButton {
+    align-self: flex-start;
+    border-radius: 999px !important;
+    padding-inline: 18px !important;
+    border-color: #d32f2f !important;
+    color: #d32f2f !important;
+    text-transform: none !important;
+}
+
+.addPageButton {
+    align-self: flex-start;
+    border-radius: 999px !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    text-transform: none !important;
+}
+
+@media (min-width: 768px) {
+    .page {
+        padding: 28px 24px 40px;
+        gap: 20px;
+    }
+
+    .pageFormShell {
+        padding: 24px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+
+    .fullWidthField {
+        grid-column: 1 / -1;
+    }
+}

@@ -23,3 +23,11 @@ export const NEWS_ENDPOINTS = {
   detail: '/news',
   remove: '/news',
 } as const;
+
+export const BOOK_ENDPOINTS = {
+  add: '/books/add',
+  list: '/books/list',
+  detail: '/books',
+  addOrUpdatePage: '/books/pages/add',
+  deletePage: '/books/page/delete',
+} as const;

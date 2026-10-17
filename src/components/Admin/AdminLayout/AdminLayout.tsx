@@ -3,8 +3,7 @@ import classnames from "./admin-layout.module.css";
 
 const adminTabs = [
   { label: "News", href: "/admin/news" },
-  { label: "Read", href: "/admin/read" },
-  { label: "Book Marketplace", href: "/admin/books" },
+  { label: "Books", href: "/admin/books" },
 ];
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
