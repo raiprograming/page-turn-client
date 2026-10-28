@@ -24,6 +24,7 @@ export interface AddBookRequestBody {
   name: string;
   authorName: string;
   aboutTheBook: string;
+  category: string;
   categoryRatings: BookCategoryRating[];
   readDuration: string;
   image: BookImage[];
@@ -44,7 +45,7 @@ export interface BookPage {
   _id: string;
   bookId: string;
   title: string;
-  image: BookPageImage[];
+  image: BookPageImage[] | null;
   summary: string;
   highlight: string;
 }
@@ -58,7 +59,7 @@ export interface AddOrUpdateBookPageRequestBody {
   _id?: string;
   bookId: string;
   title: string;
-  image: BookPageImage[];
+  image: BookPageImage[] | null;
   summary: string;
   highlight: string;
 }

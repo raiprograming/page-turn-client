@@ -8,12 +8,13 @@ import useBooks, { type BookFormValues } from "./use-books"
 import useBooksList from "./use-books-list"
 import styles from './books.module.css';
 import { AddCircleOutlined, RemoveCircleOutlined } from '@mui/icons-material';
-import type { BookCategoryRating } from '../../../api';
+import type { BookCategoryRating, HyperParameterOption } from '../../../api';
 
 export const booksValidationSchema = object({
     name: string().required('Name is required'),
     authorName: string().required('Author name is required'),
     aboutTheBook: string().required('About the book is required'),
+    category: mixed<HyperParameterOption>().nullable().required('Category is required'),
     readDuration: string().required('Read duration is required'),
     image: mixed<File>().nullable().required('Image is required'),
     imageName: string().nullable(),
@@ -31,6 +32,7 @@ const initialValues: BookFormValues = {
     name: '',
     authorName: '',
     aboutTheBook: '',
+    category: null,
     categoryRatings: [{ category: '', rating: 0 }],
     readDuration: '',
     image: null,
@@ -143,6 +145,18 @@ function BooksFormFields({ formId }: BooksFormFieldsProps) {
                     helperText={getFieldError('readDuration')}
                     className={styles.fieldHalf}
                     placeholder="e.g. 5 hr 30 min"
+                />
+
+                <Option
+                    name="category"
+                    entity="book"
+                    type="category"
+                    label="Category"
+                    value={currentValue.category}
+                    setFieldValue={setFieldValue}
+                    error={Boolean(getFieldError('category'))}
+                    helperText={getFieldError('category')}
+                    className={styles.fieldHalf}
                 />
             </Box>
 

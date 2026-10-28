@@ -180,7 +180,7 @@ function useBookPage(bookId: string | undefined) {
                     imageUrl = uploadedName ? buildAssetUrl(uploadedName) : '';
                 }
 
-                const image = imageUrl ? [{ type: 'cover', url: imageUrl }] : [];
+                const image = imageUrl ? [{ type: 'cover', url: imageUrl }] : null;
 
                 const response = await bookService.addOrUpdateBookPage({
                     _id: pageEntry?.pageId,

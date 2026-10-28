@@ -119,7 +119,7 @@ function PageFormFields({ formId, onRemovePage }: PageFormFieldsProps) {
                 ) : (
                     <TextField
                         id={`${formId}-image`}
-                        label="Add Image"
+                        label="Image"
                         type="file"
                         fullWidth
                         onChange={handleImageChange}

@@ -108,7 +108,7 @@ function Intelligence() {
                 <Box className={styles.card}>
                     <Box className={styles.categoryRow}>
                         <Typography className={styles.category}>{currentNews.category}</Typography>
-                        <span className={styles.liveDot} />
+                        <span data-type={currentNews.criticality} className={styles.liveDot} />
                     </Box>
 
                     <Box className={styles.titleRow}>

@@ -58,8 +58,15 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #ef4444;
     flex-shrink: 0;
+}
+
+.liveDot[data-type="non-critical"] {
+    background: #facc15;
+}
+
+.liveDot[data-type="critical"] {
+    background: #ef4444;
 }
 
 .titleRow {

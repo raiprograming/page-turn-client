@@ -6,7 +6,7 @@ import useIntelligenceDetail from './use-intelligence-detail';
 import styles from './IntelligenceDetails.module.css';
 
 function IntelligenceDetail() {
-    const { news, loading, errorMessage, getCoverImageUrl, handleSave, isToastOpen, toastMessage, closeToast } = useIntelligenceDetail();
+    const { news, loading, errorMessage, getCoverImageUrl, handleSave, handleShare, isToastOpen, toastMessage, closeToast } = useIntelligenceDetail();
 
     const renderToast = () => (
         <Snackbar
@@ -65,7 +65,7 @@ function IntelligenceDetail() {
                 </Box>
 
                 <Box className={styles.contentWrapper}>
-                    <p className={styles.content}>{news.summary}</p>
+                    <p className={styles.content}>{news.audienceDescription}</p>
                 </Box>
 
                 <Box className={styles.tipBox}>
@@ -77,7 +77,7 @@ function IntelligenceDetail() {
                     <button type="button" aria-label="Save" className={`${styles.footerAction} pressable`} onClick={handleSave}>
                         <BookmarkBorderIcon fontSize="small" />
                     </button>
-                    <button type="button" aria-label="Share" className={`${styles.footerAction} pressable`}>
+                    <button type="button" aria-label="Share" className={`${styles.footerAction} pressable`} onClick={handleShare}>
                         <ShareOutlinedIcon fontSize="small" />
                     </button>
                 </Box>

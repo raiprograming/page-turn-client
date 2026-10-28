@@ -11,6 +11,7 @@ export const DUMMY_BOOKS: Book[] = [
         authorName: 'Maya Linwood',
         aboutTheBook:
             'A lone astronomer uncovers a signal hidden in starlight, setting off a journey across continents to decode a message that could change humanity\'s understanding of its place in the universe.',
+        category: 'thriller',
         categoryRatings: [
             { category: 'Sci-Fi', rating: 5 },
             { category: 'Mystery', rating: 4 },
@@ -24,6 +25,7 @@ export const DUMMY_BOOKS: Book[] = [
         authorName: 'Rohan Qureshi',
         aboutTheBook:
             'In a bustling bazaar town, a young trader\'s chance discovery of a forgotten ledger reveals a decades-old betrayal that still shapes the fortunes of every family living there today.',
+        category: 'leadership',
         categoryRatings: [
             { category: 'Drama', rating: 4 },
             { category: 'Historical', rating: 4 },
@@ -37,6 +39,7 @@ export const DUMMY_BOOKS: Book[] = [
         authorName: 'Elena Marchetti',
         aboutTheBook:
             'Two childhood friends separated by circumstance reconnect through letters sent in paper boats down a monsoon river, rediscovering a friendship neither thought they could keep.',
+        category: 'romance',
         categoryRatings: [{ category: 'Romance', rating: 5 }],
         readDuration: '3 hr 10 min',
         image: [],

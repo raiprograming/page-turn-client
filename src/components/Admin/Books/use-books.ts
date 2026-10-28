@@ -6,6 +6,7 @@ import {
     bookService,
     type AddBookRequestBody,
     type BookCategoryRating,
+    type HyperParameterOption,
 } from '../../../api';
 import { API_BASE_URL } from '../../../api/config';
 
@@ -13,6 +14,7 @@ export interface BookFormValues {
     name: string;
     authorName: string;
     aboutTheBook: string;
+    category: HyperParameterOption | null;
     categoryRatings: BookCategoryRating[];
     readDuration: string;
     image: File | null;
@@ -48,6 +50,7 @@ function buildBookRequestBody(values: BookFormValues, image: AddBookRequestBody[
         name: values.name,
         authorName: values.authorName,
         aboutTheBook: values.aboutTheBook,
+        category: values.category?.value ?? '',
         categoryRatings: values.categoryRatings,
         readDuration: values.readDuration,
         image,

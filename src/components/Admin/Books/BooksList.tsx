@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, Chip, Pagination, Rating, Typography } from '@mui/material';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import type { ChangeEvent } from 'react';
@@ -77,6 +78,8 @@ function BooksList({ booksList, page, totalPages, loading, errorMessage, handleP
                                     </Box>
 
                                     <Box className={styles.readDurationRow}>
+                                        <CategoryOutlinedIcon fontSize="small" className={styles.readDurationIcon} />
+                                        <Typography className={styles.readDurationText}>{book.category}</Typography>
                                         <ScheduleOutlinedIcon fontSize="small" className={styles.readDurationIcon} />
                                         <Typography className={styles.readDurationText}>{book.readDuration}</Typography>
                                     </Box>

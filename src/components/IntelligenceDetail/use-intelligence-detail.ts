@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { newsService, type NewsListItem } from '../../api';
 import { buildAssetUrl } from '../Admin/News/use-news';
+import { shareNews } from '../Intelligence/share-news';
 
 function useIntelligenceDetail() {
     const { meta: newsId } = useParams<{ meta: string }>();
@@ -71,12 +72,21 @@ function useIntelligenceDetail() {
         setIsToastOpen(true);
     };
 
+    const handleShare = async () => {
+        if (!news || !newsId) {
+            return;
+        }
+
+        await shareNews(news, newsId);
+    };
+
     return {
         news,
         loading,
         errorMessage,
         getCoverImageUrl,
         handleSave,
+        handleShare,
         isToastOpen,
         toastMessage,
         closeToast,

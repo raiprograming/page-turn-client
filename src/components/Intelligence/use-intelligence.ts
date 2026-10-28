@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { newsService, type NewsListItem } from '../../api';
 import { buildAssetUrl } from '../Admin/News/use-news';
+import { shareNews } from './share-news';
 
 // Query param used to deep-link into a single news item, e.g. /intelligence?meta=<newsId>.
 const META_PARAM = 'meta';
@@ -194,56 +195,14 @@ function useIntelligence() {
         setIsToastOpen(true);
     };
 
-    // Builds a shareable deep link for the news item currently on screen.
-    // Reuses the existing `meta` id when already viewing a specific news item,
-    // otherwise uses the id of the news item currently shown from the paginated list.
-    const getShareUrl = () => {
-        if (!currentNews) {
-            return '';
-        }
-
-        const newsId = isSpecificView ? metaNewsId : currentNews._id;
-
-        if (!newsId) {
-            return '';
-        }
-
-        const shareUrl = new URL(window.location.href);
-        shareUrl.search = '';
-        shareUrl.searchParams.set(META_PARAM, newsId);
-
-        return shareUrl.toString();
-    };
-
     const handleShare = async () => {
-        const shareUrl = getShareUrl();
+        const newsId = isSpecificView ? metaNewsId : currentNews?._id;
 
-        if (!shareUrl || !currentNews) {
+        if (!currentNews || !newsId) {
             return;
         }
 
-        const shareData: ShareData = {
-            title: currentNews.title,
-            text: currentNews.summary,
-            url: shareUrl,
-        };
-
-        try {
-            if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
-                await navigator.share(shareData);
-                return;
-            }
-
-            if (navigator.clipboard?.writeText) {
-                await navigator.clipboard.writeText(shareUrl);
-            }
-        } catch (error: unknown) {
-            if (error instanceof DOMException && error.name === 'AbortError') {
-                return;
-            }
-
-            console.error('Failed to share news:', error);
-        }
+        await shareNews(currentNews, newsId);
     };
 
     const getCoverImageUrl = (item: NewsListItem) => {
