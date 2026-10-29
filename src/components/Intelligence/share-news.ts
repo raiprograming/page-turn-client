@@ -20,7 +20,7 @@ export async function shareNews(news: NewsListItem, newsId: string) {
         }
 
         if (navigator.clipboard?.writeText) {
-            await navigator.clipboard.writeText(shareData.url);
+            await navigator.clipboard.writeText(shareData.url || "");
         }
     } catch (error: unknown) {
         if (error instanceof DOMException && error.name === 'AbortError') {
