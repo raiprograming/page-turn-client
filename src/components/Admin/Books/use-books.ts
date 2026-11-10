@@ -14,7 +14,7 @@ export interface BookFormValues {
     name: string;
     authorName: string;
     aboutTheBook: string;
-    category: HyperParameterOption | null;
+    category: HyperParameterOption[] | [];
     categoryRatings: BookCategoryRating[];
     readDuration: string;
     image: File | null;
@@ -50,7 +50,7 @@ function buildBookRequestBody(values: BookFormValues, image: AddBookRequestBody[
         name: values.name,
         authorName: values.authorName,
         aboutTheBook: values.aboutTheBook,
-        category: values.category?.value ?? '',
+        category: values.category?.map(option => option.value) ?? [],
         categoryRatings: values.categoryRatings,
         readDuration: values.readDuration,
         image,
@@ -79,7 +79,7 @@ function useBooks(onBookAdded?: () => void) {
                     },
                 ]);
 
-                image = uploadedName ? [{ type: 'cover', url: buildAssetUrl(uploadedName) }] : [];
+                image = uploadedName ? [{ type: 'cover', name: uploadedName }] : [];
             }
 
             const bookRequestBody = buildBookRequestBody(values, image);

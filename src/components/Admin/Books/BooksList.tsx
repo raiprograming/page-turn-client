@@ -6,6 +6,7 @@ import type { ChangeEvent } from 'react';
 import { Link } from 'react-router';
 import type { Book } from '../../../api';
 import styles from './books.module.css';
+import { buildAssetUrl } from './use-books';
 
 interface BooksListProps {
     booksList: Book[];
@@ -44,7 +45,7 @@ function BooksList({ booksList, page, totalPages, loading, errorMessage, handleP
             {!loading && !errorMessage && booksList.length > 0 && (
                 <Box className={styles.cardGrid}>
                     {booksList.map((book) => {
-                        const coverImageUrl = book.image?.[0]?.url;
+                        const coverImageUrl = buildAssetUrl(book.image?.[0]?.name);
 
                         return (
                             <Card key={book._id ?? book.name} className={styles.bookCard}>
@@ -79,7 +80,14 @@ function BooksList({ booksList, page, totalPages, loading, errorMessage, handleP
 
                                     <Box className={styles.readDurationRow}>
                                         <CategoryOutlinedIcon fontSize="small" className={styles.readDurationIcon} />
-                                        <Typography className={styles.readDurationText}>{book.category}</Typography>
+                                        {/* <Typography className={styles.readDurationText}>{book.category}</Typography> */}
+                                        {
+                                            book.category.map((cat) => (
+                                                <Chip key={cat} label={cat} size="small" className={styles.categoryChip} />
+                                            ))
+                                        }
+                                    </Box>
+                                    <Box className={styles.readDurationRow}>
                                         <ScheduleOutlinedIcon fontSize="small" className={styles.readDurationIcon} />
                                         <Typography className={styles.readDurationText}>{book.readDuration}</Typography>
                                     </Box>

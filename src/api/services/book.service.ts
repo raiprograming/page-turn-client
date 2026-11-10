@@ -8,7 +8,7 @@ export interface BookCategoryRating {
 
 export interface BookImage {
   type: string;
-  url: string;
+  name: string;
 }
 
 export interface BookPageImage {
@@ -24,7 +24,7 @@ export interface AddBookRequestBody {
   name: string;
   authorName: string;
   aboutTheBook: string;
-  category: string;
+  category: string[];
   categoryRatings: BookCategoryRating[];
   readDuration: string;
   image: BookImage[];

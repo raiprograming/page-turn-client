@@ -9,6 +9,7 @@ import useBooksList from "./use-books-list"
 import styles from './books.module.css';
 import { AddCircleOutlined, RemoveCircleOutlined } from '@mui/icons-material';
 import type { BookCategoryRating, HyperParameterOption } from '../../../api';
+import MultiOption from '../../MultiOption/multi-option';
 
 export const booksValidationSchema = object({
     name: string().required('Name is required'),
@@ -32,7 +33,7 @@ const initialValues: BookFormValues = {
     name: '',
     authorName: '',
     aboutTheBook: '',
-    category: null,
+    category: [],
     categoryRatings: [{ category: '', rating: 0 }],
     readDuration: '',
     image: null,
@@ -147,7 +148,7 @@ function BooksFormFields({ formId }: BooksFormFieldsProps) {
                     placeholder="e.g. 5 hr 30 min"
                 />
 
-                <Option
+                <MultiOption 
                     name="category"
                     entity="book"
                     type="category"
