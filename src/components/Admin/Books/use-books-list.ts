@@ -3,48 +3,6 @@ import { bookService, type Book } from '../../../api';
 
 const PAGE_SIZE = 6;
 
-// Shown only when the API has not yet returned any book, so the list design can still be reviewed.
-export const DUMMY_BOOKS: Book[] = [
-    {
-        _id: 'dummy-1',
-        name: 'The Silent Horizon',
-        authorName: 'Maya Linwood',
-        aboutTheBook:
-            'A lone astronomer uncovers a signal hidden in starlight, setting off a journey across continents to decode a message that could change humanity\'s understanding of its place in the universe.',
-        category: 'thriller',
-        categoryRatings: [
-            { category: 'Sci-Fi', rating: 5 },
-            { category: 'Mystery', rating: 4 },
-        ],
-        readDuration: '6 hr 20 min',
-        image: [],
-    },
-    {
-        _id: 'dummy-2',
-        name: 'Embers of the Old Market',
-        authorName: 'Rohan Qureshi',
-        aboutTheBook:
-            'In a bustling bazaar town, a young trader\'s chance discovery of a forgotten ledger reveals a decades-old betrayal that still shapes the fortunes of every family living there today.',
-        category: 'leadership',
-        categoryRatings: [
-            { category: 'Drama', rating: 4 },
-            { category: 'Historical', rating: 4 },
-        ],
-        readDuration: '4 hr 45 min',
-        image: [],
-    },
-    {
-        _id: 'dummy-3',
-        name: 'Paper Boats and Promises',
-        authorName: 'Elena Marchetti',
-        aboutTheBook:
-            'Two childhood friends separated by circumstance reconnect through letters sent in paper boats down a monsoon river, rediscovering a friendship neither thought they could keep.',
-        category: 'romance',
-        categoryRatings: [{ category: 'Romance', rating: 5 }],
-        readDuration: '3 hr 10 min',
-        image: [],
-    },
-];
 
 function useBooksList() {
     const [booksList, setBooksList] = useState<Book[]>([]);
