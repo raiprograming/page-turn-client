@@ -50,18 +50,20 @@ function ReadingView({ pages }: ReadingViewProps) {
                     preventSwipe={preventSwipe}
                 >
                     <div className={styles.card}>
-                        <div className={styles.cardBody}>
+                        <div className={`${styles.cardBody} pressable`}>
                             {imageName && (
                                 <img
                                     src={buildAssetUrl(imageName)}
                                     alt={currentPage.title}
-                                    className={styles.pageImage}
+                                    className={`${styles.pageImage} pressable`}
                                     draggable={false}
                                 />
                             )}
-                            <h2 className={styles.pageTitle}>{currentPage.title}</h2>
-                            <p className={styles.summary}>{currentPage.summary}</p>
-                            {currentPage.highlight && <p className={styles.highlight}>{currentPage.highlight}</p>}
+                            <h2 className={`${styles.pageTitle} pressable`}>{currentPage.title}</h2>
+                            <p className={`${styles.summary} pressable`}>{currentPage.summary}</p>
+                            {currentPage.highlight && (
+                                <p className={`${styles.highlight} pressable`}>{currentPage.highlight}</p>
+                            )}
                         </div>
                     </div>
                 </TinderCard>
