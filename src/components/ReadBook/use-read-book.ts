@@ -67,7 +67,7 @@ function useReadBook() {
         book,
         loading,
         errorMessage,
-        coverImageUrl: buildAssetUrl(book?.image?.[0]?.name),
+        coverImageUrl: buildAssetUrl(book?.image?.[0]?.name || ""),
         aboutParagraphs,
         footerDetails,
         handleBack,

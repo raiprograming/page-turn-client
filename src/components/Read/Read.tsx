@@ -1,5 +1,3 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Link } from 'react-router';
 import BooksListSection from './BooksListSection';
 import BooksOfTheDay from './BooksOfTheDay';
 import ExploreLibrary from './ExploreLibrary';

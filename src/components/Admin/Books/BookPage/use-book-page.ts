@@ -31,7 +31,7 @@ function generateKey(): string {
 function mapBookPageToFormValues(bookPage: BookPage): PageFormValues {
     return {
         title: bookPage.title,
-        imageUrl: bookPage.image?.[0]?.url ?? '',
+        imageUrl: bookPage.image?.[0]?.name ? buildAssetUrl(bookPage.image[0].name) : '',
         summary: bookPage.summary,
         highlight: bookPage.highlight,
     };
@@ -58,6 +58,17 @@ function buildAssetUrl(filename: string): string {
     const baseUrl = (API_BASE_URL || '').replace(/\/$/, '');
 
     return `${baseUrl}${ASSET_ENDPOINTS.url}?filename=${encodeURIComponent(filename)}`;
+}
+
+// Reverses buildAssetUrl, extracting the stored file name back out of an asset url.
+function extractAssetFilename(url: string): string {
+    try {
+        const parsed = new URL(url, API_BASE_URL || window.location.origin);
+
+        return parsed.searchParams.get('filename') ?? url;
+    } catch {
+        return url;
+    }
 }
 
 function useBookPage(bookId: string | undefined) {
@@ -180,7 +191,7 @@ function useBookPage(bookId: string | undefined) {
                     imageUrl = uploadedName ? buildAssetUrl(uploadedName) : '';
                 }
 
-                const image = imageUrl ? [{ type: 'cover', url: imageUrl }] : null;
+                const image = imageUrl ? [{ type: 'cover', name: extractAssetFilename(imageUrl) }] : null;
 
                 const response = await bookService.addOrUpdateBookPage({
                     _id: pageEntry?.pageId,

@@ -7,6 +7,7 @@ const WHEEL_DELTA_THRESHOLD = 10;
 
 export interface TinderCardApi {
     swipe: (dir?: 'left' | 'right' | 'up' | 'down') => Promise<void>;
+    restoreCard: () => Promise<void>;
 }
 
 function useReadingView(pages: BookPage[]) {
