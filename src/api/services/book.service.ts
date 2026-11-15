@@ -13,7 +13,7 @@ export interface BookImage {
 
 export interface BookPageImage {
   type: string;
-  url: string;
+  name: string;
 }
 
 export interface BookErrorResponse {

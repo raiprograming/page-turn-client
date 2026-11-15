@@ -10,6 +10,7 @@ import Books from './components/Admin/Books/Books';
 import ProtectedAdminRoute from './hooks/ProtectedAdminRoute';
 import News from './components/Admin/News/News';
 import Read from './components/Read/Read';
+import ReadBook from './components/ReadBook/ReadBook';
 
 function App() {
   return(
@@ -18,6 +19,7 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/read" element={<Read />} />
+          <Route path="/read/:meta" element={<ReadBook />} />
           <Route path="/intelligence" element={<Intelligence />} />
           <Route path="/intelligence/:meta" element={<IntelligenceDetail />} />
           <Route path="/profile" element={<Profile />} />

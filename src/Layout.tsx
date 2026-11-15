@@ -19,7 +19,7 @@ const formatBottomLabel = (label: string) => label.charAt(0).toUpperCase() + lab
 function Layout() {
   const navigate = useNavigate()
   const userInfo = useAppSelector((state) => state.user.userInfo)
-  const { handleNavItemClick, isNavItemActive } = useLayout()
+  const { handleNavItemClick, isNavItemActive, isBookReadPage } = useLayout()
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window === 'undefined') {
       return false
@@ -38,6 +38,8 @@ function Layout() {
 
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const showBottomNav = isMobile && !isBookReadPage
 
   return (
     <Box
@@ -115,7 +117,7 @@ function Layout() {
         sx={{
           position: 'fixed',
           top: 'var(--navbar-height)',
-          bottom: isMobile ? 'var(--bottomnav-height)' : 0,
+          bottom: showBottomNav ? 'var(--bottomnav-height)' : 0,
           left: 0,
           right: 0,
           boxSizing: 'border-box',
@@ -134,7 +136,7 @@ function Layout() {
         <Outlet />
       </Box>
 
-      {isMobile ? (
+      {showBottomNav ? (
         <Box
           sx={{
             position: 'fixed',

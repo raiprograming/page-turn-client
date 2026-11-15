@@ -19,6 +19,7 @@ export const useLayout = () => {
   }
 
   const isNavItemActive = (label: string) => pathname === navPaths[label]
+  const isBookReadPage = /^\/read\/[^/]+\/?$/.test(pathname)
 
-  return { handleNavItemClick, isNavItemActive }
+  return { handleNavItemClick, isNavItemActive, isBookReadPage }
 }

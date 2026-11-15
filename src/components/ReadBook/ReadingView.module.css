@@ -1,0 +1,144 @@
+.root {
+    --serif: Georgia, 'Times New Roman', serif;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 16px 0 0;
+    background: var(--cream, #faf7f2);
+    font-family: var(--serif);
+}
+
+.progressSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.progressTrack {
+    height: 6px;
+    overflow: hidden;
+    border: 1px solid var(--text-h);
+    border-radius: 999px;
+    background: #e8e0d4;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.progressMeta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+}
+
+.pageLabel {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.percent {
+    color: var(--text);
+}
+
+.tinderCard {
+    flex: 1;
+    min-height: 0;
+    touch-action: pan-y;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    height: 100%;
+    background: var(--cream, #faf7f2);
+    cursor: grab;
+}
+
+.cardBody {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.pageImage {
+    width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
+    object-fit: cover;
+    user-select: none;
+}
+
+.pageTitle {
+    margin: 0;
+    color: var(--text-h);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.summary {
+    margin: 0;
+    color: var(--text-h);
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.highlight {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+    border-top: 2px solid var(--text-h);
+}
+
+.exitButton,
+.turnButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.exitButton {
+    color: var(--text);
+}
+
+.turnButton {
+    margin-left: auto;
+    color: var(--primary-color);
+}
