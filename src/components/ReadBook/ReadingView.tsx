@@ -14,6 +14,7 @@ interface ReadingViewProps {
 function ReadingView({ pages }: ReadingViewProps) {
     const {
         cardRef,
+        bodyRef,
         currentPage,
         isLastPage,
         progressPercent,
@@ -50,7 +51,7 @@ function ReadingView({ pages }: ReadingViewProps) {
                     preventSwipe={preventSwipe}
                 >
                     <div className={styles.card}>
-                        <div className={`${styles.cardBody} pressable`}>
+                        <div ref={bodyRef} className={`${styles.cardBody} pressable`}>
                             {imageName && (
                                 <img
                                     src={buildAssetUrl(imageName)}

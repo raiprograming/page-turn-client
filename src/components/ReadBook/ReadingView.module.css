@@ -75,6 +75,8 @@
     gap: 12px;
     min-height: 0;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 .pageImage {

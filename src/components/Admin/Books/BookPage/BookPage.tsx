@@ -26,7 +26,7 @@ export const pageValidationSchema = object({
             return typeof value === 'string' && /^https?:\/\/\S+$/.test(value);
         }),
     summary: string().required('Summary is required'),
-    highlight: string().required('Highlight is required'),
+    highlight: string().default('')
 });
 
 interface PageFormFieldsProps {

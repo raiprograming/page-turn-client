@@ -1,9 +1,10 @@
-import { useRef, useState, type WheelEvent } from 'react';
+import { useEffect, useRef, useState, type WheelEvent } from 'react';
 import { useNavigate } from 'react-router';
 import type { BookPage } from '../../api';
 
 const WHEEL_THROTTLE_MS = 600;
 const WHEEL_DELTA_THRESHOLD = 10;
+const AXIS_LOCK_PX = 6;
 
 export interface TinderCardApi {
     swipe: (dir?: 'left' | 'right' | 'up' | 'down') => Promise<void>;
@@ -14,7 +15,42 @@ function useReadingView(pages: BookPage[]) {
     const navigate = useNavigate();
     const cardRef = useRef<TinderCardApi | null>(null);
     const lastWheelTimeRef = useRef(0);
+    const bodyRef = useRef<HTMLDivElement | null>(null);
     const [pageIndex, setPageIndex] = useState(0);
+
+    // react-tinder-card translates the card on both axes for every touchmove, which makes the
+    // card wobble while scrolling. Lock the gesture axis and hide vertical moves from the card.
+    useEffect(() => {
+        const body = bodyRef.current;
+        if (!body) return undefined;
+
+        let start = { x: 0, y: 0 };
+        let axis: 'x' | 'y' | null = null;
+
+        const onTouchStart = (ev: TouchEvent) => {
+            start = { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+            axis = null;
+        };
+        const onTouchMove = (ev: TouchEvent) => {
+            if (!axis) {
+                const dx = Math.abs(ev.touches[0].clientX - start.x);
+                const dy = Math.abs(ev.touches[0].clientY - start.y);
+                if (dx < AXIS_LOCK_PX && dy < AXIS_LOCK_PX) {
+                    ev.stopPropagation();
+                    return;
+                }
+                axis = dx > dy ? 'x' : 'y';
+            }
+            if (axis === 'y') ev.stopPropagation();
+        };
+
+        body.addEventListener('touchstart', onTouchStart, { passive: true });
+        body.addEventListener('touchmove', onTouchMove, { passive: true });
+        return () => {
+            body.removeEventListener('touchstart', onTouchStart);
+            body.removeEventListener('touchmove', onTouchMove);
+        };
+    }, [pageIndex]);
 
     const totalPages = pages.length;
     const currentPage = pages[pageIndex] ?? null;
@@ -60,6 +96,7 @@ function useReadingView(pages: BookPage[]) {
 
     return {
         cardRef,
+        bodyRef,
         currentPage,
         isLastPage,
         progressPercent,
